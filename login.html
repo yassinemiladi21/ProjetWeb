@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ticketi</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <h1 class="title"><i>Ticketi</i></h1>
+    <div class="login" style="z-index: 1; opacity: 1">
+      <h1>Login</h1>
+      <form method="post">
+        <div class="text">
+          <input type="text" id="user" required />
+          <span></span>
+          <label for="user">Username</label>
+        </div>
+        <div class="text">
+          <input type="password" id="pass" required />
+          <span></span>
+          <label for="pass">Password</label>
+        </div>
+        <input type="submit" value="Login" />
+        <div class="signup-text">
+          Don't have an account ? <a href="#" onclick="change1()">Signup</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="signup" style="z-index: 0; opacity: 0">
+      <h1>Sign Up</h1>
+      <form method="post">
+        <div class="text">
+          <input type="text" id="user" required />
+          <span></span>
+          <label for="user">Username</label>
+        </div>
+        <div class="text">
+          <input type="password" id="pass" required />
+          <span></span>
+          <label for="pass">Password</label>
+        </div>
+        <input type="submit" value="Sign Up" />
+        <div class="login-text">
+          Already have an account ? <a href="#" onclick="change2()">Login</a>
+        </div>
+      </form>
+    </div>
+
+    <script src="insc.js"></script>
+  </body>
+</html>
