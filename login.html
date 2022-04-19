@@ -29,35 +29,35 @@
 
     <div class="signup" style="z-index: 0; opacity: 0">
       <h1>S'inscrire</h1>
-      <form method="post">
+      <form action="newuser.php" method="post">
         <div class="text">
-          <input type="text" id="fname" required />
+          <input type="text" name="nom" id="fname" required />
           <span></span>
           <label for="fname">Nom</label>
         </div>
         <div class="text">
-          <input type="text" id="lname" required />
+          <input type="text" name="prenom" id="lname" required />
           <span></span>
           <label for="lname">Prenom</label>
         </div>
         <div class="text">
-          <input type="text" id="cin" required />
+          <input type="text" name="cin"id="cin" required />
           <span></span>
           <label for="cin">CIN</label>
         </div>
         <div class="choose">
-          <select name="ce" id="ce">
+          <select name="role" id="ce">
             <option value="chauffeur">Chauffeur</option>
             <option value="etudiant">Etudiant</option>
           </select>
         </div>
         <div class="text">
-          <input type="text" id="user" required />
+          <input type="text" name="username" id="user" required />
           <span></span>
           <label for="user">Username</label>
         </div>
         <div class="text">
-          <input type="password" id="pass" required />
+          <input type="password" name="pwd" id="pass" required />
           <span></span>
           <label for="pass">Mot de passe</label>
         </div>
