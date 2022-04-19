@@ -9,7 +9,7 @@
     <h1 class="title"><i>Ticketi</i></h1>
     <div class="login" style="z-index: 1; opacity: 1">
       <h1>Se connecter</h1>
-      <form method="post">
+      <form method="POST" action="send.php">
         <div class="text">
           <input type="text" id="user" required />
           <span></span>
@@ -29,7 +29,7 @@
 
     <div class="signup" style="z-index: 0; opacity: 0">
       <h1>S'inscrire</h1>
-      <form action="newuser.php" method="post">
+      <form action="send.php" method="post">
         <div class="text">
           <input type="text" name="nom" id="fname" required />
           <span></span>
@@ -41,7 +41,7 @@
           <label for="lname">Prenom</label>
         </div>
         <div class="text">
-          <input type="text" name="cin"id="cin" required />
+          <input type="text" name="cin" id="cin" required />
           <span></span>
           <label for="cin">CIN</label>
         </div>
