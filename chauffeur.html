@@ -64,33 +64,33 @@
     </div>
 
     <div class="creation">
-      <form method="POST" action="">
+      <form method="POST" action="creervoyage.php">
         <div class="text">
-          <input type="text" id="nbpassagers" required />
+          <input type="text" name="nbpassagers" id="nbpassagers" required />
           <span></span>
           <label for="user">Nombre Passagers</label>
         </div>
         <div class="text">
-          <input type="text" id="depart" required />
+          <input type="text" name="depart" id="depart" required />
           <span></span>
           <label for="pass">Départ</label>
         </div>
         <div class="text">
-          <input type="text" id="arrivee" required />
+          <input type="text" name="arrivee" id="arrivee" required />
           <span></span>
           <label for="pass">Arrivée</label>
         </div>
         <div class="text">
-          <input type="text" id="prix" required />
+          <input type="number" min="0" max="99" name="prix" id="prix" required />
           <span></span>
           <label for="pass">Prix</label>
         </div>
         <div class="text">
-          <input type="text" id="heuredep" required />
+          <input type="time" name="heuredep" id="heuredep" required />
           <span></span>
           <label for="pass">Heure Départ</label>
         </div>
-        <input type="submit" value="Créer" />
+        <input type="submit" name="submit" value="Créer" />
         <input type="submit" value="Annuler" onclick="cancel()" />
       </form>
     </div>
