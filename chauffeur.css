@@ -70,7 +70,7 @@ main {
 }
 
 .data {
-  width: 70%;
+  width: 80%;
 }
 
 .content-table {
@@ -172,7 +172,14 @@ div .choose {
   width: 100%;
 }
 
-input[type="submit"] {
+.deleteBtn {
+  background: #dd3d5a;
+  width: 100px;
+  font-size: 12px;
+}
+
+input[type="submit"],
+input[type="button"] {
   width: 49%;
   height: 50px;
   border: 1px solid;

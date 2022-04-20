@@ -24,7 +24,6 @@
           <button class="btn" style="background: #25c956" onclick="create()">
             Créer voyage
           </button>
-          <button class="btn" style="background: #dd3d5a">Supprimer</button>
         </div>
         <div class="data">
           <table class="content-table">
@@ -35,7 +34,9 @@
                 <th>Départ</th>
                 <th>Arrivée</th>
                 <th>Prix</th>
+                <th>Date</th>
                 <th>Heure Départ</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -44,18 +45,20 @@
                 <td>Domenic</td>
                 <td>88,110</td>
                 <td>dcode</td>
+                <td>dcode</td>
+                <td>dcode</td>
+                <td>dcode</td>
+                <td><button class="btn deleteBtn">Supprimer</button></td>
               </tr>
               <tr class="active-row">
                 <td>2</td>
                 <td>Sally</td>
                 <td>72,400</td>
                 <td>Students</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Nick</td>
-                <td>52,300</td>
-                <td>dcode</td>
+                <td>72,400</td>
+                <td>72,400</td>
+                <td>Students</td>
+                <td><button class="btn deleteBtn">Supprimer</button></td>
               </tr>
             </tbody>
           </table>
@@ -81,9 +84,21 @@
           <label for="pass">Arrivée</label>
         </div>
         <div class="text">
-          <input type="number" min="0" max="99" name="prix" id="prix" required />
+          <input
+            type="number"
+            min="0"
+            max="99"
+            name="prix"
+            id="prix"
+            required
+          />
           <span></span>
           <label for="pass">Prix</label>
+        </div>
+        <div class="text">
+          <input type="date" name="date" id="date" required />
+          <span></span>
+          <label for="date">Date</label>
         </div>
         <div class="text">
           <input type="time" name="heuredep" id="heuredep" required />
@@ -91,7 +106,9 @@
           <label for="pass">Heure Départ</label>
         </div>
         <input type="submit" name="submit" value="Créer" />
-        <input type="submit" value="Annuler" onclick="cancel()" />
+        <div style="display: inline" onclick="cancel()">
+          <input type="button" name="cancel" value="Annuler" />
+        </div>
       </form>
     </div>
     <script src="chauffeur.js"></script>
