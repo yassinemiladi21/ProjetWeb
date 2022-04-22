@@ -17,3 +17,10 @@ function change2() {
   signup.style.opacity = "0";
   signup.style.transition = "all 1s";
 }
+
+function passage()
+{
+  const tout=document.querySelector(".div");
+  tout.style.display = "none";
+  tout.style.opacity = "0";
+}

@@ -51,3 +51,4 @@ function onDeleteRow(e) {
 
 formEl.addEventListener("submit", onAddData);
 tableEl.addEventListener("click", onDeleteRow);
+

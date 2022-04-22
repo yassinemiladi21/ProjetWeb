@@ -9,7 +9,7 @@
     <h1 class="title"><i>Ticketi</i></h1>
     <div class="login" style="z-index: 1; opacity: 1">
       <h1>Se connecter</h1>
-      <form method="POST" action="send.php">
+      <form method="POST" action="chauffeur.php">
         <div class="text">
           <input type="text" id="user" name="usern" required />
           <span></span>
@@ -20,7 +20,8 @@
           <span></span>
           <label for="pass">Mot de passe</label>
         </div>
-        <input type="submit" value="Se connecter" />
+        <input type="submit" value="Se connecter" onclick="passage()"/>
+
         <div class="signup-text">
           Pas un membre ? <a href="#" onclick="change1()">S'inscrire</a>
         </div>
@@ -71,3 +72,9 @@
     <script src="insc.js"></script>
   </body>
 </html>
+<?php 
+if ($_POST)
+{
+    extract($_POST);
+}
+?>
