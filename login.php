@@ -1,6 +1,30 @@
 <?php
 include "connect.php";
 session_start();
+if(isset($_POST["Submit1"])){
+$cin=mysqli_real_escape_string($conn,$_POST["usern"]);
+$password=mysqli_real_escape_string($conn,$_POST["pwd"]);
+$exist=mysqli_query($conn,"SELECT * FROM user WHERE cin=$cin AND pwd='$password'") or die("query failed");
+if(mysqli_num_rows($exist)>0){
+     $row = mysqli_fetch_assoc($exist);
+	 if($row['role']=='chauffeur'){
+		 $_SESSION['chauff_name']=$row['nom'];
+		 $_SESSION['chauff_prenom']=$row['prenom'];
+		 $_session['chauff_pwd']=$row['pwd'];
+		 header("location:chauffeur.php");
+	 }
+	 /*else{
+		  $_SESSION['etudiant_name']=row['nom'];
+		 $_SESSION['etudiant_email']=row['prenom'];
+		 $_session['etudiant_pwd']=row['pwd'];
+		 header("location:home.php");
+	 }*/
+}
+else{
+	$message[]="CIN ou mot de passe invalides";
+}
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -13,7 +37,7 @@ session_start();
     <h1 class="title"><i>Ticketi</i></h1>
     <div class="login" style="z-index: 1; opacity: 1">
       <h1>Se connecter</h1>
-      <form method="POST" action="get.php">
+      <form method="POST">
         <div class="text">
           <input type="number" id="user" name="usern" required />
           <span></span>
@@ -32,7 +56,7 @@ session_start();
       </form>
     </div>
 
-    <div class="signup" style="z-index: 0; opacity: 0">
+     <div class="signup" style="z-index: 0; opacity: 0">
       <h1>S'inscrire</h1>
       <form action="send.php" method="post">
         <div class="text">
@@ -76,9 +100,3 @@ session_start();
     <script src="insc.js"></script>
   </body>
 </html>
-<?php 
-if ($_POST)
-{
-    extract($_POST);
-}
-?>

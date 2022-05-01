@@ -21,7 +21,7 @@ function change2() {
 function passage()
 {
   document.location.href="chauffeur.php";
-  /*const tout=document.querySelector(".div");
+  const tout=document.querySelector(".*");
   tout.style.display = "none";
-  tout.style.opacity = "0";*/
+  tout.style.opacity = "0";
 }

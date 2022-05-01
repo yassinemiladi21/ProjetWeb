@@ -1,5 +1,7 @@
-<?php require("login.php"); 
-/*session_start();*/
+<?php
+include "connect.php";
+include "deletevoyage.php";
+//session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +16,10 @@
   <body>
     <div class="content">
       <header>
-        <h1>Welcome  <?php echo  'Welcome'; ?></h1>
+        <h1>Welcome <?php echo $_SESSION['chauff_prenom'] ?></h1>
         <nav>
           <ul>
-            <li><a href="login.html">Se déconnecter</a></li>
+            <li><a href="logout.php">Se déconnecter</a></li>
           </ul>
         </nav>
       </header>
@@ -28,6 +30,7 @@
             Créer voyage
           </button>
         </div>
+    
         <div class="data">
           <table class="content-table">
             <thead>
@@ -43,26 +46,28 @@
               </tr>
             </thead>
             <tbody>
+            <?php
+         $select = mysqli_query($conn, "SELECT * FROM `voyage`") or die('query failed');
+         if(mysqli_num_rows($select) > 0){
+            while($fetch = mysqli_fetch_assoc($select)){
+           ?>
               <tr>
-                <td>1</td>
-                <td>Domenic</td>
-                <td>88,110</td>
-                <td>dcode</td>
-                <td>dcode</td>
-                <td>dcode</td>
-                <td>dcode</td>
-                <td><button class="btn deleteBtn">Supprimer</button></td>
+                <td name="ID"><?php echo $fetch['idvoyage']; ?></td>
+                <td><?php echo $fetch['nbpassagers']; ?></td>
+                <td><?php echo $fetch['depart']; ?></td>
+                <td><?php echo $fetch['arrivee']; ?></td>
+                <td><?php echo $fetch['prix']; ?></td>
+                <td><?php echo $fetch['date']; ?></td>
+                <td><?php echo $fetch['heuredep']; ?></td>
+                <td><button name="Delete" action="deletevoyage.php" class="btn deleteBtn" >Supprimer</button></td>
               </tr>
-              <tr class="active-row">
-                <td>2</td>
-                <td>Sally</td>
-                <td>72,400</td>
-                <td>Students</td>
-                <td>72,400</td>
-                <td>72,400</td>
-                <td>Students</td>
-                <td><button class="btn deleteBtn">Supprimer</button></td>
-              </tr>
+              <?php
+              }
+              }
+              else{
+                echo 'Aucun voyagé crée !';
+               }
+              ?>
             </tbody>
           </table>
         </div>
