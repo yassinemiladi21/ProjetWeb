@@ -1,4 +1,6 @@
-<?php require("login.php"); ?>
+<?php require("login.php"); 
+/*session_start();*/
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +14,7 @@
   <body>
     <div class="content">
       <header>
-        <h1>Welcome  <?php echo $usern; ?></h1>
+        <h1>Welcome  <?php echo  'Welcome'; ?></h1>
         <nav>
           <ul>
             <li><a href="login.html">Se déconnecter</a></li>

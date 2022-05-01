@@ -1,26 +1,30 @@
+<?php
+include "connect.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <title>Ticketi</title>
     <link rel="stylesheet" href="login.css" />
-  </head>v 
+  </head> 
   <body>
     <h1 class="title"><i>Ticketi</i></h1>
     <div class="login" style="z-index: 1; opacity: 1">
       <h1>Se connecter</h1>
-      <form method="POST" action="chauffeur.php">
+      <form method="POST" action="get.php">
         <div class="text">
-          <input type="text" id="user" name="usern" required />
+          <input type="number" id="user" name="usern" required />
           <span></span>
-          <label for="user">Username</label>
+          <label for="user">Numéro CIN</label>
         </div>
         <div class="text">
-          <input type="password" id="pass" required />
+          <input type="password" name="pwd" id="pass" required />
           <span></span>
           <label for="pass">Mot de passe</label>
         </div>
-        <input type="submit" value="Se connecter" onclick="passage()"/>
+        <input type="submit" name="Submit1" value="Se connecter"/>
 
         <div class="signup-text">
           Pas un membre ? <a href="#" onclick="change1()">S'inscrire</a>

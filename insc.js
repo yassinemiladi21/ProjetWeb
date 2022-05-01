@@ -20,7 +20,8 @@ function change2() {
 
 function passage()
 {
-  const tout=document.querySelector(".div");
+  document.location.href="chauffeur.php";
+  /*const tout=document.querySelector(".div");
   tout.style.display = "none";
-  tout.style.opacity = "0";
+  tout.style.opacity = "0";*/
 }
