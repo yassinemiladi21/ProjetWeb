@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Ticketi</title>
     <link rel="stylesheet" href="login.css" />
-  </head>
+  </head>v 
   <body>
     <h1 class="title"><i>Ticketi</i></h1>
     <div class="login" style="z-index: 1; opacity: 1">
