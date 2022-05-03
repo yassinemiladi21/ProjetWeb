@@ -1,7 +1,6 @@
 <?php
 include "connect.php";
-include "deletevoyage.php";
-//session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +15,8 @@ include "deletevoyage.php";
   <body>
     <div class="content">
       <header>
-        <h1>Welcome <?php echo $_SESSION['chauff_prenom'] ?></h1>
+        <h1>Welcome <?php echo $_SESSION['chauff_prenom']; ?>
+      </h1>
         <nav>
           <ul>
             <li><a href="logout.php">Se déconnecter</a></li>
@@ -52,14 +52,14 @@ include "deletevoyage.php";
             while($fetch = mysqli_fetch_assoc($select)){
            ?>
               <tr>
-                <td name="ID"><?php echo $fetch['idvoyage']; ?></td>
+                <td><?php echo $fetch['idvoyage']; ?></td>
                 <td><?php echo $fetch['nbpassagers']; ?></td>
                 <td><?php echo $fetch['depart']; ?></td>
                 <td><?php echo $fetch['arrivee']; ?></td>
                 <td><?php echo $fetch['prix']; ?></td>
                 <td><?php echo $fetch['date']; ?></td>
                 <td><?php echo $fetch['heuredep']; ?></td>
-                <td><button name="Delete" action="deletevoyage.php" class="btn deleteBtn" >Supprimer</button></td>
+                <td> <a class="btn DeleteBtn" href="deletevoyage.php?id=<?php echo $fetch['idvoyage'];?>">Supprimer</a> </td>
               </tr>
               <?php
               }
@@ -76,6 +76,11 @@ include "deletevoyage.php";
 
     <div class="creation">
       <form method="POST" action="creervoyage.php">
+      <div class="text">
+          <input type="number" name="id" id="id" required />
+          <span></span>
+          <label for="pass">ID voyage</label>
+        </div>
         <div class="text">
           <input type="text" name="nbpassagers" id="nbpassagers" required />
           <span></span>

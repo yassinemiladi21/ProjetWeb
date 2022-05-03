@@ -8,6 +8,7 @@ $exist=mysqli_query($conn,"SELECT * FROM user WHERE cin=$cin AND pwd='$password'
 if(mysqli_num_rows($exist)>0){
      $row = mysqli_fetch_assoc($exist);
 	 if($row['role']=='chauffeur'){
+     $_SESSION['cinchauff']=$row['cin'];
 		 $_SESSION['chauff_name']=$row['nom'];
 		 $_SESSION['chauff_prenom']=$row['prenom'];
 		 $_session['chauff_pwd']=$row['pwd'];
