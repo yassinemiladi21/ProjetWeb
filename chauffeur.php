@@ -47,7 +47,8 @@ session_start();
             </thead>
             <tbody>
             <?php
-         $select = mysqli_query($conn, "SELECT * FROM `voyage`") or die('query failed');
+         $cinc=$_SESSION['cinchauff'];
+         $select = mysqli_query($conn, "SELECT * FROM `voyage` where cin=$cinc") or die('query failed');
          if(mysqli_num_rows($select) > 0){
             while($fetch = mysqli_fetch_assoc($select)){
            ?>
@@ -59,7 +60,7 @@ session_start();
                 <td><?php echo $fetch['prix']; ?></td>
                 <td><?php echo $fetch['date']; ?></td>
                 <td><?php echo $fetch['heuredep']; ?></td>
-                <td> <a class="btn DeleteBtn" href="deletevoyage.php?id=<?php echo $fetch['idvoyage'];?>">Supprimer</a> </td>
+                <td> <span><a class="btn deleteBtn" href="deletevoyage.php?id=<?php echo $fetch['idvoyage'];?>">Supprimer</a></span> </td>
               </tr>
               <?php
               }

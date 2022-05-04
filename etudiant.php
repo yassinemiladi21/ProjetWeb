@@ -1,3 +1,7 @@
+<?php
+include "connect.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,10 +15,10 @@
   <body>
     <div class="content">
       <header>
-        <h1>Welcome Foulen</h1>
+        <h1>Welcome <?php echo $_SESSION['etudiant']; ?></h1>
         <nav>
           <ul>
-            <li><a>Se déconnecter</a></li>
+            <li><a href="logout.php">Se déconnecter</a></li>
           </ul>
         </nav>
       </header>
@@ -46,26 +50,28 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Domenic</td>
-                  <td>88,110</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td><button class="btn resBtn">Réserver</button></td>
-                </tr>
-                <tr class="active-row">
-                  <td>2</td>
-                  <td>Sally</td>
-                  <td>72,400</td>
-                  <td>Students</td>
-                  <td>72,400</td>
-                  <td>72,400</td>
-                  <td>Students</td>
-                  <td><button class="btn resBtn">Réserver</button></td>
-                </tr>
+              <?php
+              $select = mysqli_query($conn, "SELECT * FROM `voyage`") or die('query failed');
+              if(mysqli_num_rows($select) > 0){
+              while($fetch = mysqli_fetch_assoc($select)){
+              ?>
+              <tr>
+                <td><?php echo $fetch['idvoyage']; ?></td>
+                <td><?php echo $fetch['nbpassagers']; ?></td>
+                <td><?php echo $fetch['depart']; ?></td>
+                <td><?php echo $fetch['arrivee']; ?></td>
+                <td><?php echo $fetch['prix']; ?></td>
+                <td><?php echo $fetch['date']; ?></td>
+                <td><?php echo $fetch['heuredep']; ?></td>
+                <td><button class="btn resBtn">Réserver</button></td>
+              </tr>
+              <?php
+              }
+              }
+              else{
+                echo 'Aucun voyage crée !';
+               }
+              ?>
               </tbody>
             </table>
           </div>
@@ -83,7 +89,7 @@
             >
               Vos Réservations
             </h2>
-            <table class="content-table tab2">
+          <table class="content-table tab2">
               <thead>
                 <tr>
                   <th>ID Billet</th>
@@ -97,28 +103,31 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Domenic</td>
-                  <td>88,110</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td>dcode</td>
-                  <td><button class="btn deleteBtn">Annuler</button></td>
-                </tr>
-                <tr class="active-row">
-                  <td>2</td>
-                  <td>Sally</td>
-                  <td>72,400</td>
-                  <td>Students</td>
-                  <td>72,400</td>
-                  <td>72,400</td>
-                  <td>Students</td>
-                  <td><button class="btn deleteBtn">Annuler</button></td>
-                </tr>
-              </tbody>
-            </table>
+              <?php
+              $cine=$_SESSION['cinetud'];
+              $select = mysqli_query($conn, "SELECT b.idbillet,b.idvoyage,v.depart,v.arrivee,v.prix,v.date,v.heuredep FROM billet b, voyage v where b.cin=$cine and b.idvoyage=v.idvoyage") or die('query failed');
+              if(mysqli_num_rows($select) > 0){
+              while($fetch = mysqli_fetch_assoc($select)){
+              ?>
+              <tr>
+                <td><?php echo $fetch['b.idbillet']; ?></td>
+                <td><?php echo $fetch['b.idvoyage']; ?></td>
+                <td><?php echo $fetch['v.depart']; ?></td>
+                <td><?php echo $fetch['v.arrivee']; ?></td>
+                <td><?php echo $fetch['v.prix']; ?></td>
+                <td><?php echo $fetch['v.date']; ?></td>
+                <td><?php echo $fetch['v.heuredep']; ?></td>
+                <td> <span><a class="btn" href="?idvoy=<?php echo $fetch['b.idvoyage'];?>">Réserver</a></span> </td>
+              </tr>
+              <?php
+              }
+              }
+              else{
+                echo 'Aucune réservation effectuée !';
+               }
+              ?>
+            </tbody>
+          </table>
           </div>
         </div>
       </main>
@@ -130,15 +139,15 @@
     </div>
 
     <div class="confirm">
-      <form method="POST" action="creervoyage.php">
+      <form method="POST">
         <h3>Confirmez votre réservation</h3>
         <div class="text">
-          <input type="password" name="cin" id="cin" required />
+          <input type="password" name="pwde" id="pwde" required />
           <span></span>
-          <label for="cin">CIN</label>
+          <label for="cin">Password</label>
         </div>
 
-        <input type="submit" name="submit" value="Confirmer" />
+        <input action="reserver.php" type="submit" name="submit" value="Confirmer" />
         <div style="display: inline" onclick="cancel()">
           <input type="button" name="cancel" value="Annuler" />
         </div>

@@ -1,5 +1,5 @@
 <?php
-    //if (isset($_POST['prix']) && isset($_POST['nbpassagers']) && isset($_POST['depart']) && isset($_POST['arrivee']) && isset($_POST['heuredep']))
+    if (isset($_POST['prix']) && isset($_POST['nbpassagers']) && isset($_POST['depart']) && isset($_POST['arrivee']) && isset($_POST['heuredep'])){
         include "connect.php";    
         $id = $_POST['id'];
         $nb = $_POST['nbpassagers'];
@@ -23,7 +23,7 @@
                 echo "Your message could not be sent";
             }
         }
-    //}
+    }
     else {
         echo "connection failed";
         header("Location: login.html");

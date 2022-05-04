@@ -14,7 +14,7 @@
             header("Location: login.html");
         }
         else {
-            $sql = "INSERT into user VALUES (1234569,'$nom','$prenom','$username','$pwd','$role')";
+            $sql = "INSERT into user VALUES (1234560,'$nom','$prenom','$username','$pwd','$role')";
             $res = mysqli_query($conn, $sql);
 
             if ($res) {

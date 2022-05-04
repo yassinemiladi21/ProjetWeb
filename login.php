@@ -14,12 +14,13 @@ if(mysqli_num_rows($exist)>0){
 		 $_session['chauff_pwd']=$row['pwd'];
 		 header("location:chauffeur.php");
 	 }
-	 /*else{
-		  $_SESSION['etudiant_name']=row['nom'];
-		 $_SESSION['etudiant_email']=row['prenom'];
-		 $_session['etudiant_pwd']=row['pwd'];
-		 header("location:home.php");
-	 }*/
+	 else{
+     $_SESSION['cinetud']=$row['cin'];
+		 $_SESSION['etudiant_name']=$row['nom'];
+		 $_SESSION['etudiant']=$row['prenom'];
+		 $_session['etudiant_pwd']=$row['pwd'];
+		 header("location:etudiant.php");
+	 }
 }
 else{
 	$message[]="CIN ou mot de passe invalides";
