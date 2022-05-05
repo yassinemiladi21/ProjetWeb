@@ -2,7 +2,7 @@ function create() {
   const cr = document.querySelector(".creation");
   cr.style.display = "inherit";
   cr.style.position = "fixed";
-  cr.style.top = "0%";
+  cr.style.top = "15%";
   cr.style.left = "35%";
   cr.style.opacity = "1";
   login.style.transition = "all 1s";
@@ -49,6 +49,6 @@ function onDeleteRow(e) {
   btn.closest("tr").remove();
 }
 
-formEl.addEventListener("submit", onAddData);
-tableEl.addEventListener("click", onDeleteRow);
+//formEl.addEventListener("submit", onAddData);
+//tableEl.addEventListener("click", onDeleteRow);
 

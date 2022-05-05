@@ -1,31 +1,32 @@
 <?php
-    if (isset($_POST['prix']) && isset($_POST['nbpassagers']) && isset($_POST['depart']) && isset($_POST['arrivee']) && isset($_POST['heuredep'])){
-        include "connect.php";    
-        $id = $_POST['id'];
+    session_start();
+    if (isset($_POST['depart']) && isset($_POST['arrivee'])) {
+        include "connect.php";
+        // $dep = $_POST['depart'];
+        // $arr = $_POST['arrivee'];
+
         $nb = $_POST['nbpassagers'];
         $depart = $_POST['depart'];
         $arrivee = $_POST['arrivee'];
         $prix= $_POST['prix'];
         $date =$_POST['date'];
         $heure = $_POST['heuredep'];
-
-        if (empty($id) || empty($nb) || empty($depart) || empty($arrivee) || empty($prix) || empty($heure)) {
-            header("Location: chauffeur.html");
+        // if (empty($dep) || empty($arr)) {
+        //     header("Location: login.php");
+        // }
+        $cin=$_SESSION['cinchauff'];
+        $sql = "INSERT into voyage(nbpassagers, depart, arrivee, prix, date, heuredep, cin) VALUES ($nb,'$depart','$arrivee',$prix,'$date','$heure',$cin)";
+        $res = mysqli_query($conn, $sql);
+        if ($res) {
+            echo "Your message was sent successfully !";
         }
         else {
-            $sql = "INSERT into voyage (nbpassagers,depart, arrivee,prix,date,heuredep,cin) VALUES ($nom,'$depart','$arrivee',$prix,$date,'08:00:00',1234568)";
-            $res = mysqli_query($conn, $sql);
-
-            if ($res) {
-                echo "Your message was sent successfully !";
-            }
-            else {
-                echo "Your message could not be sent";
-            }
+            echo "Your message could not be sent";
         }
+
     }
     else {
         echo "connection failed";
-        header("Location: login.html");
+        header("Location: login.php");
     }
 ?>

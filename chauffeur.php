@@ -76,26 +76,21 @@ session_start();
     </div>
 
     <div class="creation">
-      <form method="POST" action="creervoyage.php">
-      <div class="text">
-          <input type="number" name="id" id="id" required />
-          <span></span>
-          <label for="pass">ID voyage</label>
-        </div>
+      <form method="post" action="creervoyage.php">
         <div class="text">
-          <input type="text" name="nbpassagers" id="nbpassagers" required />
+          <input type="number" name="nbpassagers" id="nbpassagers" required />
           <span></span>
-          <label for="user">Nombre Passagers</label>
+          <label for="nbpassagers">Nombre Passagers</label>
         </div>
         <div class="text">
           <input type="text" name="depart" id="depart" required />
           <span></span>
-          <label for="pass">Départ</label>
+          <label for="depart">Départ</label>
         </div>
         <div class="text">
           <input type="text" name="arrivee" id="arrivee" required />
           <span></span>
-          <label for="pass">Arrivée</label>
+          <label for="arrivee">Arrivée</label>
         </div>
         <div class="text">
           <input
@@ -107,7 +102,7 @@ session_start();
             required
           />
           <span></span>
-          <label for="pass">Prix</label>
+          <label for="prix">Prix</label>
         </div>
         <div class="text">
           <input type="date" name="date" id="date" required />
@@ -117,9 +112,9 @@ session_start();
         <div class="text">
           <input type="time" name="heuredep" id="heuredep" required />
           <span></span>
-          <label for="pass">Heure Départ</label>
+          <label for="heuredep">Heure Départ</label>
         </div>
-        <input type="submit" name="submit" value="Créer" />
+        <input type="submit" name="submitvoy" value="Créer"/>
         <div style="display: inline" onclick="cancel()">
           <input type="button" name="cancel" value="Annuler" />
         </div>

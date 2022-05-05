@@ -60,3 +60,7 @@ function change2() {
   //formEl.addEventListener("submit", onAddData);
   table1.addEventListener("click", onres);
   table2.addEventListener("click", onDeleteRow);
+
+  function set_voyid(id) {
+    document.getElementById("IDres").value = id;
+  }

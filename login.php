@@ -72,7 +72,7 @@ else{
           <label for="lname">Prenom</label>
         </div>
         <div class="text">
-          <input type="text" name="cin" id="cin" required />
+          <input type="number" name="cinuser" id="cin" required />
           <span></span>
           <label for="cin">CIN</label>
         </div>
@@ -88,7 +88,7 @@ else{
           <label for="user">Username</label>
         </div>
         <div class="text">
-          <input type="password" name="pwd" id="pass" required />
+          <input type="password" name="pwdcreate" id="passc" required />
           <span></span>
           <label for="pass">Mot de passe</label>
         </div>

@@ -51,9 +51,10 @@ session_start();
               </thead>
               <tbody>
               <?php
-              $select = mysqli_query($conn, "SELECT * FROM `voyage`") or die('query failed');
+              $select = mysqli_query($conn, "SELECT * FROM voyage") or die('query failed');
               if(mysqli_num_rows($select) > 0){
               while($fetch = mysqli_fetch_assoc($select)){
+                if($fetch['nbpassagers']>0){
               ?>
               <tr>
                 <td><?php echo $fetch['idvoyage']; ?></td>
@@ -63,9 +64,11 @@ session_start();
                 <td><?php echo $fetch['prix']; ?></td>
                 <td><?php echo $fetch['date']; ?></td>
                 <td><?php echo $fetch['heuredep']; ?></td>
-                <td><button class="btn resBtn">Réserver</button></td>
+                <td><button class="btn resBtn" onclick="set_voyid(<?php echo $fetch['idvoyage']; ?>)">Réserver</button></td>
               </tr>
+              
               <?php
+                }
               }
               }
               else{
@@ -107,20 +110,20 @@ session_start();
               $cine=$_SESSION['cinetud'];
               $select = mysqli_query($conn, "SELECT b.idbillet,b.idvoyage,v.depart,v.arrivee,v.prix,v.date,v.heuredep FROM billet b, voyage v where b.cin=$cine and b.idvoyage=v.idvoyage") or die('query failed');
               if(mysqli_num_rows($select) > 0){
-              while($fetch = mysqli_fetch_assoc($select)){
-              ?>
-              <tr>
-                <td><?php echo $fetch['b.idbillet']; ?></td>
-                <td><?php echo $fetch['b.idvoyage']; ?></td>
-                <td><?php echo $fetch['v.depart']; ?></td>
-                <td><?php echo $fetch['v.arrivee']; ?></td>
-                <td><?php echo $fetch['v.prix']; ?></td>
-                <td><?php echo $fetch['v.date']; ?></td>
-                <td><?php echo $fetch['v.heuredep']; ?></td>
-                <td> <span><a class="btn" href="?idvoy=<?php echo $fetch['b.idvoyage'];?>">Réserver</a></span> </td>
-              </tr>
-              <?php
-              }
+                while($fetch = mysqli_fetch_assoc($select)){
+                ?>
+                <tr>
+                  <td><?php echo $fetch['idbillet']; ?></td>
+                  <td><?php echo $fetch['idvoyage']; ?></td>
+                  <td><?php echo $fetch['depart']; ?></td>
+                  <td><?php echo $fetch['arrivee']; ?></td>
+                  <td><?php echo $fetch['prix']; ?></td>
+                  <td><?php echo $fetch['date']; ?></td>
+                  <td><?php echo $fetch['heuredep']; ?></td>
+                  <td><button class="btn">">supprimer</button> </td>
+                </tr>
+                <?php
+                }
               }
               else{
                 echo 'Aucune réservation effectuée !';
@@ -138,16 +141,17 @@ session_start();
       </div>
     </div>
 
-    <div class="confirm">
-      <form method="POST">
+    <div class="confirm"> 
+      <form method="POST" action="reserver.php">
         <h3>Confirmez votre réservation</h3>
         <div class="text">
           <input type="password" name="pwde" id="pwde" required />
           <span></span>
           <label for="cin">Password</label>
         </div>
-
-        <input action="reserver.php" type="submit" name="submit" value="Confirmer" />
+        <input type="hidden" name="IDres" id="IDres">
+        <input type="submit" name="submit" value="Confirmer" />
+        <!-- <span><a name="submitres" >Confirmer</a></span> -->
         <div style="display: inline" onclick="cancel()">
           <input type="button" name="cancel" value="Annuler" />
         </div>
