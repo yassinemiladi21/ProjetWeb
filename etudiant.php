@@ -51,7 +51,7 @@ session_start();
               </thead>
               <tbody>
               <?php
-              $select = mysqli_query($conn, "SELECT * FROM voyage") or die('query failed');
+              $select = mysqli_query($conn, "SELECT * FROM voyage order by date,heuredep asc") or die('query failed');
               if(mysqli_num_rows($select) > 0){
               while($fetch = mysqli_fetch_assoc($select)){
                 if($fetch['nbpassagers']>0){

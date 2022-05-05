@@ -19,6 +19,7 @@
 
             if ($res) {
                 header("Location:login.php");
+            }
             else {
                 echo "Erreur de création du compte";
             }

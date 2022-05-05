@@ -171,11 +171,8 @@ div .choose {
 .text input:valid ~ span::before {
   width: 100%;
 }
-td span {
-  background : black; 
-}
 .deleteBtn {
-  background-color: #dd3d5a;
+  background: #dd3d5a;
   width: 100px;
   font-size: 12px;
   padding:10px;

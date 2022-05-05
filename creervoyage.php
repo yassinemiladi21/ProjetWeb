@@ -18,10 +18,10 @@
         $sql = "INSERT into voyage(nbpassagers, depart, arrivee, prix, date, heuredep, cin) VALUES ($nb,'$depart','$arrivee',$prix,'$date','$heure',$cin)";
         $res = mysqli_query($conn, $sql);
         if ($res) {
-            echo "Your message was sent successfully !";
+            echo "Voyage crée avec succès !";
         }
         else {
-            echo "Your message could not be sent";
+            echo "Erreur de création du voyage";
         }
 
     }
